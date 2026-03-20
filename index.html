@@ -40,14 +40,10 @@ textarea.si{resize:vertical;line-height:1.6;}
 <script type="text/babel" data-presets="react">
 
 // ─── GITHUB CONFIG ────────────────────────────────────────────────────
-// Token no se guarda en el código — se pide al usuario y se guarda en localStorage
+const GH_TOKEN = "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";
 const GH_REPO  = "unidadscoutpl/scouts-formacion";
 const GH_FILE  = "data.json";
 const GH_API   = `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`;
-
-function getToken(){ return localStorage.getItem("gh_token")||""; }
-function saveToken(t){ localStorage.setItem("gh_token",t); }
-function clearToken(){ localStorage.removeItem("gh_token"); }
 
 const C = {
   v900:"#1a3a1a",v800:"#1e4d1e",v700:"#256325",v600:"#2d7a2d",
@@ -165,13 +161,13 @@ function seedEd(id,nombre,opts={}){
 }
 
 const SEED=[
-  seedEd("ed_jazmin","Jazmín Molina",{fechaIngreso:"2018-08-11",hab:"Curso de Jefes / Wood Badge",habNivel:"jefe_unidad",nivelacion:"Habilitada como Ayudante de Unidad e inició formación de Jefe/a de Unidad antes del cambio de esquema. N1 y N2 validados por nivelación. Para completar el N3 debe realizar únicamente: «Sistema de Equipos: Liderazgo y resolución de conflictos» y «Primeros auxilios emocionales».",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-25"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:"11/08/2018"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"23/09/2018"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/11/2019"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"13/09/2022"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"15/05/2021"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"13/08/2022"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"08/08/2020"},{etapa:"ayudante_unidad",nombre:"Clima Educativo",realizada:true,fecha:"14/11/2020"},{etapa:"jefe_unidad",nombre:"Involucramiento Comunitario",realizada:true,fecha:"2/9/2023"},{etapa:"jefe_unidad",nombre:"Acompañamiento",realizada:true,fecha:"30/09/2023"},{etapa:"jefe_unidad",nombre:"Educador y su Fe 2",realizada:true,fecha:"18/11/2023"}]}),
-  seedEd("ed_francisco","Francisco Ciavatti",{fechaIngreso:"2022-08-27",hab:"Curso Básico (sistema anterior)",habNivel:"jefe_unidad",nivelacion:"Habilitado como Ayudante de Unidad. No inició formación de Jefe/a de Unidad. N1 y N2 validados por nivelación. Debe completar el N3 íntegro del nuevo esquema.",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-14"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:""},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/6/2023"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 2",realizada:true,fecha:"10/9/2024"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"1/7/2023"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"27/08/2022"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"23/09/2023"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"24/06/2023"},{etapa:"ayudante_unidad",nombre:"Educador y su Fe 1",realizada:true,fecha:"29/07/2023"}]}),
-  seedEd("ed_camila","Camila Palopoli",{fechaIngreso:"2023-08-26",hab:"Curso Básico (sistema anterior)",habNivel:"ayudante_unidad",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-13"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-08"}],expsViejo:[{etapa:"ayudante_unidad",nombre:"Formación Scout",realizada:true,fecha:"26/8/2023"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"16/9/2023"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"25/11/2023"}]}),
-  seedEd("ed_nahuel","Nahuel Olivera",{fechaIngreso:"2024-09-06",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-06"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-08"}]}),
-  seedEd("ed_gino","Gino D'Aquila",{fechaIngreso:"2025-07-02",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2025-07-02"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-22"}]}),
-  seedEd("ed_matias_a","Matías Alegre",{fechaIngreso:"2025-07-01",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2025-07-01"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-22"}]}),
-  seedEd("ed_raul","Raúl",{fechaIngreso:"2024-01-01"}),
+  seedEd("ed_jazmin","Jazmín M.",{fechaIngreso:"2018-08-11",hab:"Curso de Jefes / Wood Badge",habNivel:"jefe_unidad",nivelacion:"Habilitada como Ayudante de Unidad e inició formación de Jefe/a de Unidad antes del cambio de esquema. N1 y N2 validados por nivelación. Para completar el N3 debe realizar únicamente: «Sistema de Equipos: Liderazgo y resolución de conflictos» y «Primeros auxilios emocionales».",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-25"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:"11/08/2018"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"23/09/2018"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/11/2019"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"13/09/2022"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"15/05/2021"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"13/08/2022"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"08/08/2020"},{etapa:"ayudante_unidad",nombre:"Clima Educativo",realizada:true,fecha:"14/11/2020"},{etapa:"jefe_unidad",nombre:"Involucramiento Comunitario",realizada:true,fecha:"2/9/2023"},{etapa:"jefe_unidad",nombre:"Acompañamiento",realizada:true,fecha:"30/09/2023"},{etapa:"jefe_unidad",nombre:"Educador y su Fe 2",realizada:true,fecha:"18/11/2023"}]}),
+  seedEd("ed_francisco","Francisco C.",{fechaIngreso:"2022-08-27",hab:"Curso Básico (sistema anterior)",habNivel:"jefe_unidad",nivelacion:"Habilitado como Ayudante de Unidad. No inició formación de Jefe/a de Unidad. N1 y N2 validados por nivelación. Debe completar el N3 íntegro del nuevo esquema.",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-14"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:""},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/6/2023"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 2",realizada:true,fecha:"10/9/2024"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"1/7/2023"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"27/08/2022"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"23/09/2023"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"24/06/2023"},{etapa:"ayudante_unidad",nombre:"Educador y su Fe 1",realizada:true,fecha:"29/07/2023"}]}),
+  seedEd("ed_camila","Camila P.",{fechaIngreso:"2023-08-26",hab:"Curso Básico (sistema anterior)",habNivel:"ayudante_unidad",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-13"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-08"}],expsViejo:[{etapa:"ayudante_unidad",nombre:"Formación Scout",realizada:true,fecha:"26/8/2023"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"16/9/2023"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"25/11/2023"}]}),
+  seedEd("ed_nahuel","Nahuel O.",{fechaIngreso:"2024-09-06",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-06"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-08"}]}),
+  seedEd("ed_gino","Gino D.",{fechaIngreso:"2025-07-02",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2025-07-02"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-22"}]}),
+  seedEd("ed_matias_a","Matías A.",{fechaIngreso:"2025-07-01",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2025-07-01"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-22"}]}),
+  seedEd("ed_raul","Raúl L.",{fechaIngreso:"2024-01-01"}),
   seedEd("ed_dylan","Dylan",{fechaIngreso:"2023-08-26",hab:"Curso Básico (sistema anterior)",habNivel:"ayudante_unidad",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-16"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-03-04"},{etapa:"intermedia",nombre:"Ap. Sistema de Equipos",realizada:true,fecha:"2025-05-04"},{etapa:"intermedia",nombre:"Ap. Marco Simbolico",realizada:true,fecha:"2025-05-17"},{etapa:"intermedia",nombre:"Ciclo de Programa",realizada:true,fecha:"2025-08-23"},{etapa:"intermedia",nombre:"Sistema de Progresiones",realizada:true,fecha:"2025-09-13"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"},{etapa:"intermedia",nombre:"Org. de act. al aire libre y resp. ambiental",realizada:false,fecha:"2025-11-08"}],expsViejo:[{etapa:"ayudante_unidad",nombre:"Formación Scout",realizada:true,fecha:"26/8/2023"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"16/9/2023"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"25/11/2023"}]}),
 ];
 
@@ -186,7 +182,7 @@ function fromBase64(b64){
 }
 
 async function ghGetSha(){
-  const r=await fetch(GH_API+"?t="+Date.now(),{headers:{"Authorization":"token "+getToken(),"Accept":"application/vnd.github.v3+json"}});
+  const r=await fetch(GH_API+"?t="+Date.now(),{headers:{"Authorization":"token "+GH_TOKEN,"Accept":"application/vnd.github.v3+json"}});
   if(!r.ok) throw new Error("gh_get_fail: "+r.status);
   const j=await r.json();
   _ghSha=j.sha;
@@ -203,7 +199,7 @@ async function ghSave(data){
   if(!_ghSha) throw new Error("SHA no disponible");
   const content=toBase64(JSON.stringify(data,null,0));
   const body={message:"Actualizacion "+new Date().toISOString(),content,sha:_ghSha};
-  const res=await fetch(GH_API,{method:"PUT",headers:{"Authorization":"token "+getToken(),"Accept":"application/vnd.github.v3+json","Content-Type":"application/json"},body:JSON.stringify(body)});
+  const res=await fetch(GH_API,{method:"PUT",headers:{"Authorization":"token "+GH_TOKEN,"Accept":"application/vnd.github.v3+json","Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!res.ok){const e=await res.text();throw new Error("gh_save_fail: "+e);}
   const j=await res.json();
   _ghSha=j.content.sha;
@@ -219,67 +215,26 @@ function App(){
   const [view,setView]=useState("dash");
   const [selEd,setSelEd]=useState(null);
   const [showAdd,setShowAdd]=useState(false);
-  const [needToken,setNeedToken]=useState(false);
-  const [tokenInput,setTokenInput]=useState("");
-  const [tokenError,setTokenError]=useState("");
   const timerRef=useRef(null);
 
-  const loadData=async()=>{
-    if(!getToken()){setNeedToken(true);setStatus("error");return;}
-    setStatus("loading");setNeedToken(false);
-    try{
-      const data=await ghLoad();
-      if(data?.educadores?.length>0){
-        setEds(data.educadores.map(ed=>({...ed,expViejo:ed.expViejo||initExpViejo(),habNivel:ed.habNivel||"",nivelacion:ed.nivelacion||""})));
-      } else {
+  useEffect(()=>{
+    (async()=>{
+      try{
+        const data=await ghLoad();
+        if(data?.educadores?.length>0){
+          setEds(data.educadores.map(ed=>({...ed,expViejo:ed.expViejo||initExpViejo(),habNivel:ed.habNivel||"",nivelacion:ed.nivelacion||""})));
+        } else {
+          setEds(SEED);
+          await ghSave({educadores:SEED});
+        }
+        setStatus("ok");
+      }catch(e){
+        console.error(e);
+        setStatus("error");
         setEds(SEED);
-        await ghSave({educadores:SEED});
       }
-      setStatus("ok");
-    }catch(e){
-      console.error(e);
-      if(e.message&&(e.message.includes("401")||e.message.includes("403"))){
-        clearToken();setNeedToken(true);setTokenError("Token inválido o expirado. Ingresá uno nuevo.");
-      }
-      setStatus("error");
-      if(!eds) setEds(SEED);
-    }
-  };
-
-  useEffect(()=>{ loadData(); },[]);
-
-  const handleTokenSave=async()=>{
-    if(!tokenInput.trim()){setTokenError("El token no puede estar vacío.");return;}
-    saveToken(tokenInput.trim());
-    setTokenError("");setTokenInput("");
-    await loadData();
-  };
-
-  if(needToken) return(
-    <div style={{minHeight:"100vh",background:"#f2fbf2",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem"}}>
-      <div style={{background:"white",border:"1.5px solid #c2e8c2",borderRadius:16,padding:"2rem",maxWidth:440,width:"100%"}}>
-        <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
-          <div style={{fontSize:40,marginBottom:10}}>⚜️</div>
-          <h2 style={{fontSize:20,fontWeight:800,color:"#1a3a1a",marginBottom:6}}>Formación Scouts</h2>
-          <p style={{fontSize:13,color:"#5a5a52",margin:0}}>Para acceder a los datos necesitás ingresar tu token de GitHub.</p>
-        </div>
-        <div style={{marginBottom:14}}>
-          <label style={{fontSize:12,color:"#256325",display:"block",marginBottom:5,fontWeight:600}}>Token de acceso personal (GitHub)</label>
-          <input className="si" type="password" value={tokenInput} onChange={e=>setTokenInput(e.target.value)} placeholder="ghp_..." onKeyDown={e=>e.key==="Enter"&&handleTokenSave()} autoFocus/>
-          <p style={{fontSize:11,color:"#8a8a80",marginTop:5,margin:"5px 0 0"}}>El token se guarda solo en este navegador y nunca se sube a ningún servidor.</p>
-        </div>
-        {tokenError&&<p style={{fontSize:12,color:"#c0392b",marginBottom:10}}>{tokenError}</p>}
-        <button className="sb sbp" style={{width:"100%",padding:"9px",fontSize:14}} onClick={handleTokenSave}>Ingresar</button>
-        <div style={{marginTop:14,padding:"10px 12px",background:"#f2fbf2",borderRadius:8,fontSize:12,color:"#5a5a52"}}>
-          <p style={{fontWeight:600,margin:"0 0 4px",color:"#256325"}}>¿Cómo obtener el token?</p>
-          <p style={{margin:"0 0 2px"}}>1. Entrá a <b>github.com</b> con la cuenta de la organización</p>
-          <p style={{margin:"0 0 2px"}}>2. Settings → Developer settings → Personal access tokens → Tokens (classic)</p>
-          <p style={{margin:"0 0 2px"}}>3. Generate new token → tildá <b>repo</b> → Generate</p>
-          <p style={{margin:0}}>4. Copiá el token que empieza con <b>ghp_</b></p>
-        </div>
-      </div>
-    </div>
-  );
+    })();
+  },[]);
 
   const persist=useCallback((newEds)=>{
     setEds(newEds);setStatus("saving");
@@ -300,7 +255,7 @@ function App(){
 
   return(
     <div style={{minHeight:"100vh",background:C.v50}}>
-      <Hdr status={status} onHome={()=>{setSelEd(null);setView("dash");}} view={view} onLogout={()=>{clearToken();setNeedToken(true);setEds(null);setStatus("loading");}}/>
+      <Hdr status={status} onHome={()=>{setSelEd(null);setView("dash");}} view={view}/>
       <div style={{maxWidth:960,margin:"0 auto",padding:"0 0 2rem"}}>
         {view==="dash"   && <Dash eds={eds} onSel={ed=>{setSelEd(ed);setView("perfil");}} persist={persist} showAdd={showAdd} setShowAdd={setShowAdd}/>}
         {view==="perfil" && selEd && <EdView ed={selEd} onBack={()=>{setSelEd(null);setView("dash");}} onSave={upd=>{const nl=eds.map(e=>e.id===upd.id?upd:e);persist(nl);setSelEd(upd);}}/>}
@@ -314,7 +269,7 @@ function StatusPill({status}){
   return <span style={{fontSize:11,padding:"3px 10px",borderRadius:20,background:s.bg,color:s.color,border:`1px solid ${s.border}`,fontWeight:500}}>{s.txt}</span>;
 }
 
-function Hdr({status,onHome,view,onLogout}){
+function Hdr({status,onHome,view}){
   return(
     <div style={{background:C.v800,padding:"12px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8,position:"sticky",top:0,zIndex:100}}>
       <div style={{display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={onHome}>
@@ -324,10 +279,7 @@ function Hdr({status,onHome,view,onLogout}){
           {view!=="dash"&&<div style={{fontSize:11,color:C.v300}}>Perfil de educador/a</div>}
         </div>
       </div>
-      <div style={{display:"flex",alignItems:"center",gap:10}}>
-        <StatusPill status={status}/>
-        <button onClick={onLogout} style={{fontSize:11,padding:"3px 10px",borderRadius:20,background:"rgba(255,255,255,.1)",color:"white",border:"1px solid rgba(255,255,255,.25)",cursor:"pointer",fontWeight:500}} title="Cambiar token">🔑 Token</button>
-      </div>
+      <StatusPill status={status}/>
     </div>
   );
 }
